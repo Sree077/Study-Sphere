@@ -150,3 +150,16 @@ margin-right:1rem;
     background-color: white;
     color: black;
 }
+.task-container{
+    background-color: rgba(255,255,255,0.2);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 8rem;
+    right: 1rem;
+    flex-direction: column;
+    padding: 5%;
+    color: rgba(0,0,0,0.9);
+    border-radius: 0.5rem;
+}

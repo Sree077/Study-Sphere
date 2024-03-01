@@ -124,3 +124,65 @@ location.reload()
     timerDisplayMinute.value = 5;
     timerDisplaySecond.value = 0;
  }
+
+
+
+
+
+ const taskInput = document.getElementById("task-input");
+const taskSubmitBtn = document.getElementById("task-submit-btn");
+const taskList = document.getElementById("task-list");
+
+let tasks = []; // Array to store tasks
+
+taskSubmitBtn.addEventListener("click", () => {
+  const taskText = taskInput.value.trim();
+  if (taskText) {
+    // Create a new task object
+    const task = {
+      id: tasks.length + 1, // Assign a unique ID
+      text: taskText,
+      completed: false,
+    };
+
+    // Add task to the array
+    tasks.push(task);
+
+    // Render the task in the task list
+    renderTask(task);
+
+    taskInput.value = ""; // Clear the input field
+  }
+});
+
+function renderTask(task) {
+  const taskItem = document.createElement("li");
+  taskItem.id = `task-${task.id}`;
+  taskItem.classList.add("task-item");
+
+  // Checkbox for task completion
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.id = `task-checkbox-${task.id}`;
+  checkbox.addEventListener("change", () => {
+    task.completed = checkbox.checked;
+  });
+
+  // Task text
+  const taskTextElement = document.createElement("span");
+  taskTextElement.textContent = task.text;
+
+  // Delete button
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.addEventListener("click", () => {
+    taskList.removeChild(taskItem);
+    tasks = tasks.filter((t) => t.id !== task.id); // Remove task from the array
+  });
+
+  taskItem.appendChild(checkbox);
+  taskItem.appendChild(taskTextElement);
+  taskItem.appendChild(deleteBtn);
+
+  taskList.appendChild(taskItem);
+}
