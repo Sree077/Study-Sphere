@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -9,47 +10,109 @@
     height: 100vh;
     background-size: cover;
     background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .logo {
     height: 7em;
-    width: 5em;
+    width: 100%;
+    position: absolute;
+    top:0;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
 }
 .logo > img {
-    position: relative;
-    top: 0;
-    left: 0;
     height: 100%;
-    margin-top: 20px;
-    margin-left: 20px;
 }
-.timer-box {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.7);
+/* .timer-box {
+    
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     padding: 20px;
     text-align: center;
     border-radius: 10px;
-}
-#timer-display {
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-button {
-    font-size: 20px;
-    padding: 10px 20px;
-    border-radius: 1em;
-}
-#timer-display{
-    background-color: transparent ;
-    border:none;
+} */
+.hr-min-sec{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.5);
+    /* margin:5%; */
+    font-size: xx-large;
+    font-weight: bold ;
     color:white;
-    text-align: center;
-    /* width:5em; */
+    border-radius: 2rem;
+    
+
 }
-#timer-display:focus{
+.hr-min-sec > input {
+    width: 5em;
+    height: 5em;
     border:none;
-    outline: none;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 900;
+    
+}
+
+.timer-box > h1 {
+    font-size: 3.5rem;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+#start-timer-btn {
+    padding: 1rem;
+    border-radius: 1em;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.4s ease; 
+    background-color: #ffffff; 
+    color: #000000; 
+    border: 2px solid #ffffff; 
+    cursor: pointer; 
+}
+
+#start-timer-btn:hover {
+    background-color: transparent; /* Changes the background to transparent on hover */
+    color: #ffffff; /* Changes text color to white (or any color that suits your design) on hover */
+}
+.btn-div{
+    /* position: ; */
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5); */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.btns{
+    padding: 1rem;
+    border-radius: 1em;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.4s ease; 
+    background-color: #ffffff; 
+    color: #000000; 
+    border: 2px solid #ffffff; 
+    cursor: pointer; 
+}
+.btns:hover{
+    background-color: transparent; /* Changes the background to transparent on hover */
+    color: #ffffff; /* Changes text color to white (or any color that suits your design) on hover */
+}
+.stop-btn{
+margin-left: 1rem;
+margin-right:1rem;
+
 }

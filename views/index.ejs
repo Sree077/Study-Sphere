@@ -6,20 +6,29 @@
     <title>StudySphere</title>
     <link rel="stylesheet" href="/stylesheets/index.css">
     <link rel="shortcut icon" href="/public/images/image.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <div class="bg-image">
         <div class="logo">
             <img src="/images/image.png" alt="main-logo">
         </div>
+        <div class="hr-min-sec">
+          <input value="00" id="timer-display-hour">:
+          <input value="25" id="timer-display-minute">:
+          <input value="00" id="timer-display-second">
+        </div>
+          <div class="btn-div">
+    <button id="start-timer-btn">Start Session</button>
+    <button onclick="stop_timer()" class="btns stop-btn"><i class="fa-regular fa-circle-stop fa-lg"></i></button>
+    <button class="btns"><i class="fa-solid fa-arrow-rotate-left fa-lg"></i></button>
     </div>
-    <div class="timer-box">
-        <h2>Timer</h2>
-        <input value="00" id="timer-display-hour">
-        <input value="01" id="timer-display-minute">
-        <input value="00" id="timer-display-second">
-        <button id="start-timer-btn">Start Session</button>
     </div>
+    <!-- <div class="timer-box"> -->
+        <!-- <h1>Timer</h1> -->
+       
+    <!-- </div> -->
+  
     <script src="/script/indexScript.js"></script>
 </body>
 </html>

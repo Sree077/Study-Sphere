@@ -8,7 +8,19 @@ let initialMinutes = 0;
 let initialSeconds = 0;
 let intervalId = null; // Variable to hold the interval ID
 
+let storedPauseInfo = JSON.parse(localStorage.getItem('pauseInfo'));
+
+// timerDisplayHour.value=storedPauseInfo.pauseHour; // Output: John Doe
+// timerDisplayMinute.value=storedPauseInfo.pauseMinute; // Output: 30
+// timerDisplaySecond.value=storedPauseInfo.pauseSecond; // Output: 30
+
+
 function startTimer() {
+ 
+  
+  timerDisplayHour.readOnly=true;
+  timerDisplayMinute.readOnly=true;
+  timerDisplaySecond.readOnly=true;
   // Validate user input:
   if (!validateInput()) {
     alert("Invalid input! Please enter valid numbers for hours, minutes, and seconds.");
@@ -40,9 +52,9 @@ function startTimer() {
     }
 
     // Calculate remaining hours, minutes, and seconds:
-    const remainingHours = Math.floor(totalSeconds / 3600);
-    const remainingMinutes = Math.floor((totalSeconds % 3600) / 60);
-    const remainingSeconds = totalSeconds % 60;
+    let remainingHours = Math.floor(totalSeconds / 3600);
+    let remainingMinutes = Math.floor((totalSeconds % 3600) / 60);
+    let remainingSeconds = totalSeconds % 60;
 
     // Update display with leading zeros:
     timerDisplayHour.value = String(remainingHours).padStart(2, '0');
@@ -58,3 +70,21 @@ function validateInput() {
 
 // Add event listener to start button:
 startButton.addEventListener("click", startTimer);
+
+function stop_timer(){
+
+  
+  let pauseInfo = {
+    pauseHour: Number(timerDisplayHour.value),
+    pauseMinute: Number(timerDisplayMinute.value),
+    pauseSecond: Number(timerDisplaySecond.value)
+};
+
+// Serializing and storing the object
+localStorage.setItem('pauseInfo', JSON.stringify(pauseInfo));
+location.reload()
+
+
+
+
+ }
