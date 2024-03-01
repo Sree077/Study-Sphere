@@ -3,19 +3,34 @@ const timerDisplayMinute = document.getElementById('timer-display-minute');
 const timerDisplaySecond = document.getElementById('timer-display-second');
 const startButton = document.getElementById('start-timer-btn');
 
+
 let initialHours = 0;
 let initialMinutes = 0;
 let initialSeconds = 0;
 let intervalId = null; // Variable to hold the interval ID
+var pauseInfo;
 
-let storedPauseInfo = JSON.parse(localStorage.getItem('pauseInfo'));
 
-// timerDisplayHour.value=storedPauseInfo.pauseHour; // Output: John Doe
-// timerDisplayMinute.value=storedPauseInfo.pauseMinute; // Output: 30
-// timerDisplaySecond.value=storedPauseInfo.pauseSecond; // Output: 30
+var storedPauseInfo ;
 
+async function checkStoredtime(){
+  storedPauseInfo = await JSON.parse(localStorage.getItem('pauseInfo'));
+  if (storedPauseInfo && storedPauseInfo.hasOwnProperty('flag') && storedPauseInfo.flag === 1) {
+    timerDisplayHour.value = storedPauseInfo.pauseHour;
+    timerDisplayMinute.value = storedPauseInfo.pauseMinute;
+    timerDisplaySecond.value = storedPauseInfo.pauseSecond;
+
+    // Create a new object with updated flag property
+    const updatedPauseInfo = { ...storedPauseInfo, flag: 0 };
+    localStorage.setItem('pauseInfo', JSON.stringify(updatedPauseInfo));
+  }
+}
+
+
+checkStoredtime()
 
 function startTimer() {
+  
  
   
   timerDisplayHour.readOnly=true;
@@ -74,17 +89,20 @@ startButton.addEventListener("click", startTimer);
 function stop_timer(){
 
   
-  let pauseInfo = {
+   pauseInfo = {
     pauseHour: Number(timerDisplayHour.value),
     pauseMinute: Number(timerDisplayMinute.value),
-    pauseSecond: Number(timerDisplaySecond.value)
+    pauseSecond: Number(timerDisplaySecond.value),
+    flag: 1
 };
 
 // Serializing and storing the object
 localStorage.setItem('pauseInfo', JSON.stringify(pauseInfo));
+// pauseInfo.flag=1
 location.reload()
 
+ }
 
-
-
+ function restartTimer(){
+  location.reload()
  }
