@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.bg-image {
+    background-image: url('../images/g4crddfnmt9a1.jpg');
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.logo {
+    height: 7em;
+    width: 5em;
+}
+.logo > img {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.timer-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+#timer-display {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+button {
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 1em;
+}

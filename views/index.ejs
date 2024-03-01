@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <div id="quotes"></div>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySphere</title>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+</head>
+<body>
+    <div class="bg-image">
+        <div class="logo">
+            <img src="/images/image.png" alt="main-logo">
+        </div>
+    </div>
+    <div class="timer-box">
+        <h2>Timer</h2>
+        <div id="timer-display">25:00</div>
+        <button id="start-timer-btn">Start Session</button>
+    </div>
+    <script src="/script/indexScript.js"></script>
+</body>
 </html>
