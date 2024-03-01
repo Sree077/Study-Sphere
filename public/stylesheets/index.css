@@ -29,6 +29,7 @@
     height: 100%;
 }
 .img-div{
+    padding-top: 0.5rem;
     height: 100%;
     width: 25%;
 }
@@ -94,11 +95,6 @@
     color: #ffffff; /* Changes text color to white (or any color that suits your design) on hover */
 }
 .btn-div{
-    /* position: ; */
-    /* top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.5); */
     color: white;
     padding: 20px;
     text-align: center;
@@ -126,4 +122,31 @@
 margin-left: 1rem;
 margin-right:1rem;
 
+}
+.fixed-timers{
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.fixed-timers > button{
+    padding: 0.7rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5rem;
+    border: solid white;
+    background-color: transparent;
+    color: white;
+    transition: background-color 0.5s ease; 
+}
+#hour2-btn{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.fixed-timers > button:hover{
+    background-color: white;
+    color: black;
 }

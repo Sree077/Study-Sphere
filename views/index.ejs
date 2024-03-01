@@ -17,6 +17,11 @@
             <div id="quote-div"><h2>"<%= quoteText %>" &nbsp; - <%= bookAuthor %></h2></div>
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4PP3DA4J0N8?utm_source=generator&theme=0" width="25%" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
+        <div class="fixed-timers">
+            <button onclick="hour1()">1 hour</button>
+            <button onclick="hour2()" id="hour2-btn">2 hour</button>
+            <button onclick="break5()">5 minute break</button>
+        </div>
         <div class="hr-min-sec">
           <input value="00" id="timer-display-hour">:
           <input value="25" id="timer-display-minute">:

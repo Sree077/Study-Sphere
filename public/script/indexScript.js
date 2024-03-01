@@ -106,3 +106,21 @@ location.reload()
  function restartTimer(){
   location.reload()
  }
+
+ function hour1(){
+    timerDisplayHour.value = 1;
+    timerDisplayMinute.value = 0;
+    timerDisplaySecond.value = 0;
+ }
+
+ function hour2(){
+    timerDisplayHour.value = 2;
+    timerDisplayMinute.value = 0;
+    timerDisplaySecond.value = 0;
+ }
+
+ function break5(){
+    timerDisplayHour.value = 0;
+    timerDisplayMinute.value = 5;
+    timerDisplaySecond.value = 0;
+ }
