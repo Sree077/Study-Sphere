@@ -42,3 +42,14 @@ button {
     padding: 10px 20px;
     border-radius: 1em;
 }
+#timer-display{
+    background-color: transparent ;
+    border:none;
+    color:white;
+    text-align: center;
+    /* width:5em; */
+}
+#timer-display:focus{
+    border:none;
+    outline: none;
+}

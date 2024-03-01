@@ -1,18 +1,23 @@
 let isSession = true; // True when in session, false when in break
-const sessionDuration = 25 * 60; // 25 minutes
-const breakDuration = 5 * 60; // 5 minutes
+let minute = 1;
+let sessionDuration = minute * 60; // 25 minutes
+let breakDuration = minute * 60; // 5 minutes
 let timeLeft = sessionDuration; // Initial time left is set to session duration
 
 const timerDisplay = document.getElementById('timer-display');
 const startButton = document.getElementById('start-timer-btn');
 
+
 startButton.addEventListener('click', function() {
     startTimer(sessionDuration); // Start with a session duration
-    startButton.style.display="none";
+    
     
 });
 
 function startTimer(duration) {
+    startButton.disabled = true;
+    timerDisplay.readOnly=true;
+    // alert(typeof(timerDisplay.value))
     timeLeft = duration;
     updateTimerDisplay(timeLeft);
 
@@ -42,5 +47,5 @@ function startTimer(duration) {
 function updateTimerDisplay(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    timerDisplay.textContent = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    timerDisplay.value = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
 }
