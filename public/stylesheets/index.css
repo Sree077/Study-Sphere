@@ -22,20 +22,31 @@
     top:0;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
 
 }
-.logo > img {
+.logo > .img-div > img {
     height: 100%;
 }
-/* .timer-box {
-    
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-} */
+.img-div{
+    height: 100%;
+    width: 25%;
+}
+.logo > iframe{
+    margin-top: 2em;
+    margin-right: 0.5em;
+}
+#quote-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#quote-div > h2{
+    color: rgba(255,255,255);
+    width: 80%;
+    font-weight: 900;
+    font-size: 1.5em;
+}
 .hr-min-sec{
     display: flex;
     align-items: center;

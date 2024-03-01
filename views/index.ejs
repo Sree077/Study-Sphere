@@ -11,7 +11,11 @@
 <body>
     <div class="bg-image">
         <div class="logo">
-            <img src="/images/image.png" alt="main-logo">
+            <div class="img-div">
+                <img src="/images/image.png" alt="main-logo">
+            </div>
+            <div id="quote-div"><h2>"<%= quoteText %>" &nbsp; - <%= bookAuthor %></h2></div>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4PP3DA4J0N8?utm_source=generator&theme=0" width="25%" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
         <div class="hr-min-sec">
           <input value="00" id="timer-display-hour">:
