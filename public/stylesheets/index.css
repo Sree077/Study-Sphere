@@ -74,6 +74,9 @@
     font-weight: 900;
     
 }
+.hr-min-sec >input:focus{
+    outline: none;
+}
 
 .timer-box > h1 {
     font-size: 3.5rem;

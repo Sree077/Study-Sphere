@@ -10,6 +10,12 @@ let initialSeconds = 0;
 let intervalId = null; // Variable to hold the interval ID
 var pauseInfo;
 
+function playAudio(){
+  const audioElement = document.getElementById('mp3-player');
+  audioElement.volume = 0.5;
+  audioElement.play()
+}
+
 
 var storedPauseInfo ;
 
@@ -60,8 +66,13 @@ function startTimer() {
 
     // Handle timer completion and stop:
     if (totalSeconds <= 0) {
+      playAudio()
       alert("Timer completed!");
+
       clearInterval(intervalId);
+      timerDisplayHour.readOnly=false;
+  timerDisplayMinute.readOnly=false;
+  timerDisplaySecond.readOnly=false;
       startButton.disabled = false; // Enable start button again
       return; // Exit the interval
     }
