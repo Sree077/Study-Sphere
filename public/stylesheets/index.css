@@ -163,3 +163,31 @@ margin-right:1rem;
     color: rgba(0,0,0,0.9);
     border-radius: 0.5rem;
 }
+.task-container > h1{
+    padding-bottom: 1rem;
+}
+.task-container > input{
+    background-color: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    height: 1.5rem;
+    border-radius: 0.5rem;
+}
+#task-submit-btn{
+    font-size: 1rem;
+    padding: .2rem;
+    margin-top: .5rem;
+}
+#task-list{
+    padding-top: 1rem;
+}
+#task-list li{
+    list-style: none;
+    padding-top: .5rem;
+}
+#task-list input{
+    margin-right: .3rem;
+}
+#task-list button{
+    margin-left: .3rem;
+}

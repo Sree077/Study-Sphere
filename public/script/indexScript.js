@@ -129,60 +129,88 @@ location.reload()
 
 
 
+
  const taskInput = document.getElementById("task-input");
-const taskSubmitBtn = document.getElementById("task-submit-btn");
-const taskList = document.getElementById("task-list");
+ const taskList = document.getElementById("task-list");
+ 
+ function loadTasksFromStorage() {
+   const storedTasks = localStorage.getItem("tasks");
+   if (storedTasks) {
+     const tasks = JSON.parse(storedTasks);
+     renderTasks(tasks); // Render existing tasks on load
+   }
+ }
+ 
+ function saveTasksToStorage(tasks) {
+   const tasksJSON = JSON.stringify(tasks);
+   localStorage.setItem("tasks", tasksJSON);
+ }
+ 
+ function renderTasks(tasks) {
+   taskList.innerHTML = ""; // Clear previous list items
+   tasks.forEach((task) => {
+     const taskItem = document.createElement("li");
+     taskItem.classList.add("task-item");
+ 
+     // Checkbox for task completion
+     const checkbox = document.createElement("input");
+     checkbox.type = "checkbox";
+     checkbox.checked = task.checked;
+     checkbox.addEventListener("change", () => {
+       task.checked = checkbox.checked;
+       saveTasksToStorage(tasks); // Update storage on completion change
+     });
+ 
+     // Task text
+     const taskTextElement = document.createElement("span");
+     taskTextElement.textContent = task.value;
+ 
+     // Delete button
+     const deleteBtn = document.createElement("button");
+     deleteBtn.textContent = "Delete";
+     deleteBtn.addEventListener("click", () => {
+       const updatedTasks = tasks.filter((t) => t !== task); // Filter out deleted task
+       renderTasks(updatedTasks); // Re-render with updated tasks
+       saveTasksToStorage(updatedTasks); // Update storage after deletion
+     });
+ 
+     taskItem.appendChild(checkbox);
+     taskItem.appendChild(taskTextElement);
+     taskItem.appendChild(deleteBtn);
+ 
+     taskList.appendChild(taskItem);
+   });
+ }
+ 
+ function createTask() {
+   const taskText = taskInput.value.trim();
+   if (taskText) {
+     // Create a new task object with checked = false
+     const newTask = {
+       checked: false,
+       value: taskText,
+     };
+ 
+     // Get existing tasks or create an empty array
+     let tasks = localStorage.getItem("tasks");
+     tasks = tasks ? JSON.parse(tasks) : [];
+ 
+     // Add the new task to the array
+     tasks.push(newTask);
+ 
+     // Save the updated tasks array back to localStorage
+     saveTasksToStorage(tasks);
+ 
+     renderTasks(tasks); // Render all tasks, including the new one
+ 
+     taskInput.value = ""; // Clear the input field for the next task
+   }
+ }
+ 
+ loadTasksFromStorage(); // Load tasks on page load
+ 
 
-let tasks = []; // Array to store tasks
 
-taskSubmitBtn.addEventListener("click", () => {
-  const taskText = taskInput.value.trim();
-  if (taskText) {
-    // Create a new task object
-    const task = {
-      id: tasks.length + 1, // Assign a unique ID
-      text: taskText,
-      completed: false,
-    };
 
-    // Add task to the array
-    tasks.push(task);
 
-    // Render the task in the task list
-    renderTask(task);
-
-    taskInput.value = ""; // Clear the input field
-  }
-});
-
-function renderTask(task) {
-  const taskItem = document.createElement("li");
-  taskItem.id = `task-${task.id}`;
-  taskItem.classList.add("task-item");
-
-  // Checkbox for task completion
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.id = `task-checkbox-${task.id}`;
-  checkbox.addEventListener("change", () => {
-    task.completed = checkbox.checked;
-  });
-
-  // Task text
-  const taskTextElement = document.createElement("span");
-  taskTextElement.textContent = task.text;
-
-  // Delete button
-  const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "Delete";
-  deleteBtn.addEventListener("click", () => {
-    taskList.removeChild(taskItem);
-    tasks = tasks.filter((t) => t.id !== task.id); // Remove task from the array
-  });
-
-  taskItem.appendChild(checkbox);
-  taskItem.appendChild(taskTextElement);
-  taskItem.appendChild(deleteBtn);
-
-  taskList.appendChild(taskItem);
-}
+ 
