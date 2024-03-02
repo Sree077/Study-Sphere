@@ -231,3 +231,19 @@ const taskInput = document.getElementById("task-input");
  
  loadTasksFromStorage(); // Load tasks on page load
  
+
+ var btn = document.getElementById("fullscreenBtn");
+
+// Add event listener to the button
+btn.addEventListener("click", function() {
+  // Request full screen
+  if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen();
+  } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+    document.documentElement.mozRequestFullScreen();
+  } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    document.documentElement.webkitRequestFullscreen();
+  } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
+    document.documentElement.msRequestFullscreen();
+  }
+});
