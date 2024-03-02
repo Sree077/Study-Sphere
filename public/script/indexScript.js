@@ -125,92 +125,17 @@ location.reload()
     timerDisplaySecond.value = 0;
  }
 
+//Raindrop
+ function createRaindrop() {
+  const raindrop = document.createElement('div');
+  raindrop.classList.add('raindrop');
+  raindrop.style.left = `${Math.random() * 100}%`;
+  document.getElementById('rainy-background').appendChild(raindrop);
 
+  // Remove raindrop after it falls
+  setTimeout(() => {
+    raindrop.remove();
+  }, 5000); // Match this with the CSS animation duration
+}
 
-
-
-
- const taskInput = document.getElementById("task-input");
- const taskList = document.getElementById("task-list");
- 
- function loadTasksFromStorage() {
-   const storedTasks = localStorage.getItem("tasks");
-   if (storedTasks) {
-     const tasks = JSON.parse(storedTasks);
-     renderTasks(tasks); // Render existing tasks on load
-   }
- }
- 
- function saveTasksToStorage(tasks) {
-   const tasksJSON = JSON.stringify(tasks);
-   localStorage.setItem("tasks", tasksJSON);
- }
- 
- function renderTasks(tasks) {
-   taskList.innerHTML = ""; // Clear previous list items
-   tasks.forEach((task) => {
-     const taskItem = document.createElement("li");
-     taskItem.classList.add("task-item");
- 
-     // Checkbox for task completion
-     const checkbox = document.createElement("input");
-     checkbox.type = "checkbox";
-     checkbox.checked = task.checked;
-     checkbox.addEventListener("change", () => {
-       task.checked = checkbox.checked;
-       saveTasksToStorage(tasks); // Update storage on completion change
-     });
- 
-     // Task text
-     const taskTextElement = document.createElement("span");
-     taskTextElement.textContent = task.value;
- 
-     // Delete button
-     const deleteBtn = document.createElement("button");
-     deleteBtn.textContent = "Delete";
-     deleteBtn.addEventListener("click", () => {
-       const updatedTasks = tasks.filter((t) => t !== task); // Filter out deleted task
-       renderTasks(updatedTasks); // Re-render with updated tasks
-       saveTasksToStorage(updatedTasks); // Update storage after deletion
-     });
- 
-     taskItem.appendChild(checkbox);
-     taskItem.appendChild(taskTextElement);
-     taskItem.appendChild(deleteBtn);
- 
-     taskList.appendChild(taskItem);
-   });
- }
- 
- function createTask() {
-   const taskText = taskInput.value.trim();
-   if (taskText) {
-     // Create a new task object with checked = false
-     const newTask = {
-       checked: false,
-       value: taskText,
-     };
- 
-     // Get existing tasks or create an empty array
-     let tasks = localStorage.getItem("tasks");
-     tasks = tasks ? JSON.parse(tasks) : [];
- 
-     // Add the new task to the array
-     tasks.push(newTask);
- 
-     // Save the updated tasks array back to localStorage
-     saveTasksToStorage(tasks);
- 
-     renderTasks(tasks); // Render all tasks, including the new one
- 
-     taskInput.value = ""; // Clear the input field for the next task
-   }
- }
- 
- loadTasksFromStorage(); // Load tasks on page load
- 
-
-
-
-
- 
+setInterval(createRaindrop, 22); // Adjust the frequency as needed
